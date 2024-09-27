@@ -53,7 +53,7 @@ public class AssociativeArray<K, V> {
     this.size = 0;
   } // AssociativeArray()
 
-  public AssociativeArray(KVPair<K, V>[] initKvPair, int initSize) { 
+  private AssociativeArray(KVPair<K, V>[] initKvPair, int initSize) { 
     this.pairs = initKvPair;
     this.size = initSize;
   }
@@ -68,7 +68,7 @@ public class AssociativeArray<K, V> {
    * @return a new copy of the array
    */
   public AssociativeArray<K, V> clone() {
-    return null; // STUB
+    return new AssociativeArray<>(this.pairs.clone(), this.size); 
   } // clone()
 
   /**
