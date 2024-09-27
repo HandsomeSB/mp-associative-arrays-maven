@@ -53,6 +53,11 @@ public class AssociativeArray<K, V> {
     this.size = 0;
   } // AssociativeArray()
 
+  public AssociativeArray(KVPair<K, V>[] initKvPair, int initSize) { 
+    this.pairs = initKvPair;
+    this.size = initSize;
+  }
+
   // +------------------+--------------------------------------------
   // | Standard Methods |
   // +------------------+
