@@ -2,6 +2,7 @@ package edu.grinnell.csc207.util;
 
 import static java.lang.reflect.Array.newInstance;
 import java.lang.StringBuilder;
+import java.util.Arrays;
 
 /**
  * A basic implementation of Associative Arrays with keys of type K
@@ -68,7 +69,15 @@ public class AssociativeArray<K, V> {
    * @return a new copy of the array
    */
   public AssociativeArray<K, V> clone() {
-    return new AssociativeArray<>(this.pairs.clone(), this.size); 
+    // need to copy the KV pairs too
+    KVPair<K, V>[] copy = Arrays.copyOf(this.pairs, this.pairs.length);
+    for(int i = 0; i < copy.length; ++i) { 
+      if(copy[i] != null) { 
+        copy[i] = copy[i].clone();
+      }
+    }
+
+    return new AssociativeArray<K, V>(copy, this.size); 
   } // clone()
 
   /**
@@ -78,10 +87,11 @@ public class AssociativeArray<K, V> {
    */
   public String toString() {
     StringBuilder str = new StringBuilder("{");
-    for(int i = 0; i < size; ++i) { 
+    for(int i = 0; i < size - 1; ++i) { 
       str.append(pairs[i].toString());
+      str.append(", ");
     } // for 
-    return str.append("}").toString();
+    return str.append(pairs[size - 1].toString()).append("}").toString();
   } // toString()
 
   // +----------------+----------------------------------------------
@@ -109,9 +119,8 @@ public class AssociativeArray<K, V> {
     } catch (KeyNotFoundException e) { 
       if(this.pairs.length <= size) { 
         this.expand();
-      } else {
-        this.pairs[size++] = new KVPair<K, V>(key, value);
-      } // if
+      } // expand
+      this.pairs[size++] = new KVPair<K, V>(key, value);
     } // try catch
   } // set(K,V)
 
@@ -170,7 +179,7 @@ public class AssociativeArray<K, V> {
    * Expand the underlying array.
    */
   void expand() {
-    this.pairs = java.util.Arrays.copyOf(this.pairs, this.pairs.length * 2);
+    this.pairs = Arrays.copyOf(this.pairs, this.pairs.length * 2);
   } // expand()
 
   /**

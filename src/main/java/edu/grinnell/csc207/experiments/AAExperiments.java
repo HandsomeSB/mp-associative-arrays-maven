@@ -96,7 +96,7 @@ public class AAExperiments {
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
 
-    AssociativeArray strings2strings = new AssociativeArray<String,String>();
+    AssociativeArray<String,String> strings2strings = new AssociativeArray<String,String>();
 
     // The empty array should not have any key. We'll try one.
     hasKey(pen, strings2strings, "k");
@@ -114,6 +114,9 @@ public class AAExperiments {
     set(pen, strings2strings, null, "nothing");
     hasKey(pen, strings2strings, null);
     get(pen, strings2strings, null);
+
+    strings2strings.set("a", "Apple");
+    pen.println(strings2strings);
     
     // And we're done.
     pen.close();
