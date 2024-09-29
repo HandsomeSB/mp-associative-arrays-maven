@@ -74,8 +74,8 @@ public class AssociativeArray<K, V> {
     for(int i = 0; i < copy.length; ++i) { 
       if(copy[i] != null) { 
         copy[i] = copy[i].clone();
-      }
-    }
+      } // if value is null
+    } // for each
 
     return new AssociativeArray<K, V>(copy, this.size); 
   } // clone()
@@ -93,7 +93,7 @@ public class AssociativeArray<K, V> {
         str.append(pairs[i].key.toString() + ":" + "null");
       } else { 
         str.append(pairs[i].toString());
-      }
+      } // if value is null
     } // for 
     return str.append("}").toString();
   } // toString()
@@ -151,7 +151,7 @@ public class AssociativeArray<K, V> {
       return true;
     } catch (KeyNotFoundException e) { 
       return false; 
-    }
+    } // try/catch 
   } // hasKey(K)
 
   /**
@@ -162,10 +162,11 @@ public class AssociativeArray<K, V> {
   public void remove(K key) {
     try { 
       int index = this.find(key);
-      this.pairs[index] = this.pairs[(size--) - 1];
+      // Replace index with last element, then decrease size by 1.
+      this.pairs[index] = this.pairs[(size--) - 1]; 
     } catch (KeyNotFoundException e) { 
       return;
-    }
+    } // try/catch
   } // remove(K)
 
   /**
