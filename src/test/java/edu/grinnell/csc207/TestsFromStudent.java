@@ -25,4 +25,32 @@ public class TestsFromStudent {
   @Test
   public void alwaysPass() throws Exception {
   } // alwaysPass()
+
+  @Test
+  public void testNullKey() throws Exception {
+    AssociativeArray<Integer, Integer> arr = new AssociativeArray<Integer, Integer>();
+    try { 
+      arr.set(null, 1);
+      fail("should throw error");
+    } catch (NullKeyException e) {
+      
+    } catch (Exception e) { 
+      fail("Should throw NullKeyException");
+    }
+
+    try { 
+      arr.get(null);
+    } catch (KeyNotFoundException e) { 
+
+    } catch ( Exception e) { 
+      fail("Should throw KeyNotFoundException");
+    }
+
+    try { 
+      assertFalse(arr.hasKey(null));
+    } catch (Exception e) { 
+      fail("should not throw exception");
+    }
+
+  }
 } // class TestsFromSam
