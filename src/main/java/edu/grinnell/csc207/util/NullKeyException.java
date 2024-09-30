@@ -10,9 +10,7 @@ public class NullKeyException extends Exception {
   // | Constructors |
   // +--------------+
 
-  /**
-   * Create a new exception.
-   */
+  /** Create a new exception. */
   public NullKeyException() {
     super("key not found");
   } // NullKeyException()
@@ -20,8 +18,7 @@ public class NullKeyException extends Exception {
   /**
    * Create a new exception with a particular message.
    *
-   * @param message
-   *   The exception's message.
+   * @param message The exception's message.
    */
   public NullKeyException(String message) {
     super(message);

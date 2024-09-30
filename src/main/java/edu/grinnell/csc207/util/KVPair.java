@@ -1,36 +1,27 @@
 package edu.grinnell.csc207.util;
 
 /**
- * An easy way to store key/value pairs.  We assume that other
- * classes will access fields directly.
+ * An easy way to store key/value pairs. We assume that other classes will access fields directly.
  *
- * @param <K>
- *   The type of the keys.
- * @param <V>
- *   The type of the values.
+ * @param <K> The type of the keys.
+ * @param <V> The type of the values.
  */
 class KVPair<K, V> {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
 
-  /**
-   * The key.
-   */
+  /** The key. */
   K key;
 
-  /**
-   * The value.
-   */
+  /** The value. */
   V val;
 
   // +--------------+------------------------------------------------
   // | Constructors |
   // +--------------+
 
-  /**
-   * Create an empty key/value pair.
-   */
+  /** Create an empty key/value pair. */
   KVPair() {
     this(null, null);
   } // KVPair()
@@ -38,8 +29,7 @@ class KVPair<K, V> {
   /**
    * Create a new key/value pair.
    *
-   * @param pairKey
-   *   The key of the new pair.
+   * @param pairKey The key of the new pair.
    */
   KVPair(K pairKey, V pairValue) {
     this.key = pairKey;
@@ -55,8 +45,8 @@ class KVPair<K, V> {
    *
    * @return the copy.
    */
-  public KVPair<K,V> clone() {
-    return new KVPair<K,V>(this.key, this.val);
+  public KVPair<K, V> clone() {
+    return new KVPair<K, V>(this.key, this.val);
   } // clone()
 
   /**
@@ -68,4 +58,3 @@ class KVPair<K, V> {
     return this.key.toString() + ":" + this.val.toString();
   } // toString()
 } // class KVPair
-

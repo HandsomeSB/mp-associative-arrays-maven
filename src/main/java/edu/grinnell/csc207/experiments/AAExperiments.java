@@ -1,7 +1,6 @@
 package edu.grinnell.csc207.experiments;
 
 import edu.grinnell.csc207.util.AssociativeArray;
-
 import java.io.PrintWriter;
 
 /**
@@ -15,21 +14,17 @@ public class AAExperiments {
   // +---------+-----------------------------------------------------
   // | Globals |
   // +---------+
-  
+
   /**
    * Log and conduct a call to `set`.
    *
-   * @param pen
-   *   Where to log the message.
-   * @param aa
-   *   The associative array we're using.
-   * @param key
-   *   The key to set.
-   * @param val
-   *   The value to set.
+   * @param pen Where to log the message.
+   * @param aa The associative array we're using.
+   * @param key The key to set.
+   * @param val The value to set.
    */
-  public static void set(PrintWriter pen, AssociativeArray<String, String> aa, 
-      String key, String val) {
+  public static void set(
+      PrintWriter pen, AssociativeArray<String, String> aa, String key, String val) {
     pen.printf("set(\"%s\", \"%s\") -> ", key, val);
     try {
       aa.set(key, val);
@@ -42,15 +37,11 @@ public class AAExperiments {
   /**
    * Log and conduct a call to `get`.
    *
-   * @param pen
-   *   Where to log the message.
-   * @param aa
-   *   The associative array.
-   * @param key
-   *   The key.
+   * @param pen Where to log the message.
+   * @param aa The associative array.
+   * @param key The key.
    */
-  public static void get(PrintWriter pen, AssociativeArray<String, String> aa,
-      String key) {
+  public static void get(PrintWriter pen, AssociativeArray<String, String> aa, String key) {
     pen.printf("get(\"%s\") -> ", key);
     try {
       pen.println(aa.get(key));
@@ -62,15 +53,11 @@ public class AAExperiments {
   /**
    * Log and conduct a call to `hasKey`.
    *
-   * @param pen
-   *   Where to log the message.
-   * @param aa
-   *   The associative array.
-   * @param key
-   *   The key.
+   * @param pen Where to log the message.
+   * @param aa The associative array.
+   * @param key The key.
    */
-  public static void hasKey(PrintWriter pen, 
-      AssociativeArray<String, String> aa, String key) {
+  public static void hasKey(PrintWriter pen, AssociativeArray<String, String> aa, String key) {
     pen.printf("hasKey(\"%s\") -> ", key);
     try {
       pen.println(aa.hasKey(key));
@@ -86,17 +73,14 @@ public class AAExperiments {
   /**
    * Run our expereiments.
    *
-   * @param args
-   *   Command-line parameters. (Ignored.)
-   *
-   * @throws Exception
-   *   When something goes wrong. Usually an I/O issue or an unexpected
-   *   Associative Array hiccup.
+   * @param args Command-line parameters. (Ignored.)
+   * @throws Exception When something goes wrong. Usually an I/O issue or an unexpected Associative
+   *     Array hiccup.
    */
   public static void main(String[] args) throws Exception {
     PrintWriter pen = new PrintWriter(System.out, true);
 
-    AssociativeArray<String,String> strings2strings = new AssociativeArray<String,String>();
+    AssociativeArray<String, String> strings2strings = new AssociativeArray<String, String>();
 
     // The empty array should not have any key. We'll try one.
     hasKey(pen, strings2strings, "k");
@@ -117,7 +101,7 @@ public class AAExperiments {
 
     strings2strings.set("a", "Apple");
     pen.println(strings2strings);
-    
+
     // And we're done.
     pen.close();
   } // main(String[])
