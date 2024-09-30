@@ -1,16 +1,11 @@
 package edu.grinnell.csc207;
 
-import edu.grinnell.csc207.util.AssociativeArray;
-import edu.grinnell.csc207.util.NullKeyException;
-import edu.grinnell.csc207.util.KeyNotFoundException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import edu.grinnell.csc207.util.AssociativeArray;
+import edu.grinnell.csc207.util.KeyNotFoundException;
+import edu.grinnell.csc207.util.NullKeyException;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -19,38 +14,34 @@ import org.junit.jupiter.api.Test;
  * @author Your Name Here
  */
 public class TestsFromStudent {
-  /**
-   * A simple test.
-   */
+  /** A simple test. */
   @Test
-  public void alwaysPass() throws Exception {
-  } // alwaysPass()
+  public void alwaysPass() throws Exception {} // alwaysPass()
 
   @Test
   public void testNullKey() throws Exception {
     AssociativeArray<Integer, Integer> arr = new AssociativeArray<Integer, Integer>();
-    try { 
+    try {
       arr.set(null, 1);
       fail("should throw error");
     } catch (NullKeyException e) {
-      
-    } catch (Exception e) { 
+
+    } catch (Exception e) {
       fail("Should throw NullKeyException");
     }
 
-    try { 
+    try {
       arr.get(null);
-    } catch (KeyNotFoundException e) { 
+    } catch (KeyNotFoundException e) {
 
-    } catch ( Exception e) { 
+    } catch (Exception e) {
       fail("Should throw KeyNotFoundException");
     }
 
-    try { 
+    try {
       assertFalse(arr.hasKey(null));
-    } catch (Exception e) { 
+    } catch (Exception e) {
       fail("should not throw exception");
     }
-
   }
 } // class TestsFromSam
