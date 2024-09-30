@@ -10,7 +10,7 @@ import java.util.Arrays;
  *
  * @param <K> the key type
  * @param <V> the value type
- * @author Your Name Here
+ * @author Harrison Zhu
  * @author Samuel A. Rebelsky
  */
 public class AssociativeArray<K, V> {
@@ -29,7 +29,7 @@ public class AssociativeArray<K, V> {
   int size;
 
   /** The array of key/value pairs. */
-  KVPair<K, V> pairs[];
+  KVPair<K, V>[] pairs;
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -43,10 +43,16 @@ public class AssociativeArray<K, V> {
     this.size = 0;
   } // AssociativeArray()
 
+  /**
+   * Private constructor for clone().
+   *
+   * @param initKvPair The initial data.
+   * @param initSize The initial size.
+   */
   private AssociativeArray(KVPair<K, V>[] initKvPair, int initSize) {
     this.pairs = initKvPair;
     this.size = initSize;
-  }
+  } // AssociativeArray(KVPair, int)
 
   // +------------------+--------------------------------------------
   // | Standard Methods |
@@ -94,8 +100,8 @@ public class AssociativeArray<K, V> {
   /**
    * Set the value associated with key to value. Future calls to get(key) will return value.
    *
-   * @param K The key whose value we are seeting.
-   * @param V The value of that key.
+   * @param key The key whose value we are seeting.
+   * @param value The value of that key.
    * @throws NullKeyException If the client provides a null key.
    */
   public void set(K key, V value) throws NullKeyException {
@@ -117,12 +123,18 @@ public class AssociativeArray<K, V> {
    *
    * @param key A key
    * @throws KeyNotFoundException when the key is null or does not appear in the associative array.
+   * @return Value associated with key.
    */
   public V get(K key) throws KeyNotFoundException {
     return this.pairs[this.find(key)].val;
   } // get(K)
 
-  /** Determine if key appears in the associative array. Should return false for the null key. */
+  /**
+   * Determine if key appears in the associative array. Should return false for the null key.
+   *
+   * @param key key to search for
+   * @return if array has key
+   */
   public boolean hasKey(K key) {
     try {
       this.find(key);
@@ -135,6 +147,8 @@ public class AssociativeArray<K, V> {
   /**
    * Remove the key/value pair associated with a key. Future calls to get(key) will throw an
    * exception. If the key does not appear in the associative array, does nothing.
+   *
+   * @param key key to remove
    */
   public void remove(K key) {
     try {
@@ -146,7 +160,11 @@ public class AssociativeArray<K, V> {
     } // try/catch
   } // remove(K)
 
-  /** Determine how many key/value pairs are in the associative array. */
+  /**
+   * Determine how many key/value pairs are in the associative array.
+   *
+   * @return Size of associative array.
+   */
   public int size() {
     return this.size;
   } // size()
@@ -166,6 +184,7 @@ public class AssociativeArray<K, V> {
    *
    * @param key The key of the entry.
    * @throws KeyNotFoundException If the key does not appear in the associative array.
+   * @return Index of first entry.
    */
   int find(K key) throws KeyNotFoundException {
     for (int i = 0; i < size; ++i) {

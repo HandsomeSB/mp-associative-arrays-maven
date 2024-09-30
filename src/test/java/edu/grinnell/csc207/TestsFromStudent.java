@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 /**
  * A place for you to put your own tests (beyond the shared repo).
  *
- * @author Your Name Here
+ * @author Harrison Zhu
  */
 public class TestsFromStudent {
   /** A simple test. */
