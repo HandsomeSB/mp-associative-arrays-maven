@@ -81,14 +81,17 @@ public class AssociativeArray<K, V> {
    * @return a string of the form "{Key0:Value0, Key1:Value1, ... KeyN:ValueN}"
    */
   public String toString() {
-    StringBuilder str = new StringBuilder("{").append(pairs[0]);
-    for (int i = 1; i < size; ++i) {
-      str.append(", ");
+    StringBuilder str = new StringBuilder("{");
+    for (int i = 0; i < size; ++i) {
       if (pairs[i].val == null) {
         str.append(pairs[i].key.toString() + ":" + "null");
       } else {
         str.append(pairs[i].toString());
       } // if value is null
+
+      if(i < size - 1) {
+        str.append(", ");
+      } // Don't append on last index
     } // for
     return str.append("}").toString();
   } // toString()
