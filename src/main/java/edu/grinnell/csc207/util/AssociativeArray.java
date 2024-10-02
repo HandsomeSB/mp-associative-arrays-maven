@@ -89,7 +89,7 @@ public class AssociativeArray<K, V> {
         str.append(pairs[i].toString());
       } // if value is null
 
-      if(i < size - 1) {
+      if (i < size - 1) {
         str.append(", ");
       } // Don't append on last index
     } // for
